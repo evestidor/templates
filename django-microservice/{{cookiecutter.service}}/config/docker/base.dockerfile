@@ -8,4 +8,4 @@ COPY Pipfile* /app/
 
 RUN pip install pipenv && pipenv install --system
 
-CMD python app.py
+CMD python manage.py runserver 0.0.0.0:8000
