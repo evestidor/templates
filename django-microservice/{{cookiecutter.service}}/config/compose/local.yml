@@ -1,0 +1,18 @@
+version: '3.6'
+
+networks:
+  default: { name: {{cookiecutter.namespace}} }
+
+services:
+
+  {{cookiecutter.service}}:
+    image: {{cookiecutter.namespace}}/{{cookiecutter.service}}:local
+    restart: unless-stopped
+    container_name: {{cookiecutter.service}}
+    build:
+      context: ../../
+      dockerfile: config/docker/local.dockerfile
+    ports:
+      - 8001:8000
+    volumes:
+      - ../../src:/app:rw,cached
